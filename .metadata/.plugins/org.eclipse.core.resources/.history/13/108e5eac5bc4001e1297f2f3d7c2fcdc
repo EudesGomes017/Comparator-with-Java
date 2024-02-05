@@ -1,0 +1,72 @@
+package application;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
+import entities.Product;
+
+public class Program {
+
+	public static void main(String[] args) {
+
+		List<Product> list = new ArrayList<>();
+
+		list.add(new Product("Tv", 900.00));
+		list.add(new Product("Notebook", 1200.00));
+		list.add(new Product("Tablet", 450.00));
+
+		// utilizando sintaxe de classe anonima
+		Comparator<Product> comp = new Comparator<Product>() {
+
+			@Override
+			public int compare(Product p1, Product p2) {
+
+				return p1.getName().toUpperCase().compareTo(p2.getName().toUpperCase());// comparando os nomes dos
+																						// produtos por
+																						// nome idependete de letras
+																						// maiúsculas
+																						// ou menusculas
+			}
+
+		};
+
+		// utilizando as expressões lambdas é um função anonima tbm chamado de arraw
+		// function
+		// o compilador ele evita fazer referencia de tipo ex (Product p1, Product p2 )
+		Comparator<Product> comp1 = (p1, p2) -> {
+			return p1.getName().toUpperCase().compareTo(p2.getName().toUpperCase());
+		};
+
+		// utilizando as expressões lambdas é um função anonima tbm chamado de arraw
+		// function
+		// o compilador ele evita fazer referencia de tipo ex (Product p1, Product p2 )
+		// como ela tem s[o uma linha podemos dispensar as chaves e o return
+		Comparator<Product> comp2 = (p1, p2) -> p1.getName().toUpperCase().compareTo(p2.getName().toUpperCase());
+
+		list.sort(comp2); // chamando o sort para ordenar chamando o objeto MyComparator
+
+		// passando meu comparator dentro do metodo sort com expressão lambda
+		list.sort((p1, p2) -> p1.getName().toUpperCase().compareTo(p2.getName().toUpperCase()));
+
+		for (Product p : list) {
+			System.out.println(p);
+		}
+
+		/*
+		 * O método sort(Comparator<? super E> c) é um método da interface List em Java.
+		 * Ele permite que você ordene os elementos da lista usando um Comparator
+		 * específico fornecido como argumento.
+		 * 
+		 * Aqui está a assinatura do método:
+		 * 
+		 * c é o Comparator usado para ordenar os elementos da lista. <? super E> é um
+		 * tipo curinga (wildcard) que indica que o Comparator pode ser de um tipo que é
+		 * um supertipo de E (o tipo de elemento armazenado na lista). Isso permite que
+		 * o método seja mais flexível em relação aos tipos que podem ser usados como
+		 * comparadores.
+		 */
+
+	}
+
+}

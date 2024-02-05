@@ -1,0 +1,25 @@
+package interfaces;
+
+import java.util.Comparator;
+
+import entities.Product;
+
+public class MyComparator implements Comparator<Product> {
+
+	/*
+	 * Em Java, o Comparator é uma interface funcional que é usada para definir a
+	 * ordem de classificação de objetos. Ele fornece um meio de comparar dois
+	 * objetos para determinar qual deles deve vir primeiro em uma ordenação. Isso é
+	 * frequentemente usado em algoritmos de ordenação, como classificar uma lista
+	 * de objetos.
+	 * 
+	 * A interface Comparator possui um único método chamado compare(), que compara
+	 * dois objetos e retorna um valor inteiro que indica a relação entre eles.
+	 */
+	@Override
+	public int compare(Product p1, Product p2) {
+
+		return;
+	}
+
+}
